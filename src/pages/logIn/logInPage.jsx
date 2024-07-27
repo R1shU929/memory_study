@@ -15,9 +15,13 @@ function LogInPage() {
     });
 
     const handleLogIn = () => {
-        console.log(IdAndPw);
+        console.log(IdAndPw); // 유저 아이디와 비번 출력
     };
 
+    const signUpNav = () => {
+        console.log('navigate 됐습니다 !');
+        navigate('/signUp');
+    };
     return (
         <BackImg>
             <Box>
@@ -33,8 +37,10 @@ function LogInPage() {
                             placeholder="아이디를 입력하세요"
                             onChange={(e) =>
                                 setIdAndPw((prev) => ({
-                                    ...prev,
-                                    userId: e.target.value,
+                                    // prev = IdAndPW. 즉, 현재의 값
+                                    ...prev, // 스프레드 연산자를 통해 객체를 벗겨서 값들만 남김
+                                    userId: e.target.value, // 그 중, userId의 값만 바꿈.
+                                    // 그 값은, 사용자가 현재 입력중인 값 !
                                 }))
                             }
                         />
@@ -53,17 +59,11 @@ function LogInPage() {
                     <BottomBox>
                         <LogInBt
                             type="Button"
-                            disabled={
-                                IdAndPw.userId === '' || IdAndPw.userPW === ''
-                            }
-                            onClick={handleLogIn}
+                            onClick={handleLogIn} // LogInBt 눌렀을 시 handleLogIn 실행
                         >
                             로그인
                         </LogInBt>
-                        <LogInBt
-                            type="Button"
-                            onClick={() => navigate('/signUp')}
-                        >
+                        <LogInBt type="Button" onClick={signUpNav}>
                             가입하러 가기
                         </LogInBt>
                     </BottomBox>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function SignUpId() {
+function SignUpId({ setUser }) {
     return (
         <NameBox0>
             <NameBox1>사용 할 아이디를 작성해주세요.</NameBox1>
@@ -9,6 +9,12 @@ function SignUpId() {
                     type="text"
                     name=""
                     placeholder="아이디 최대 10글자"
+                    onChange={(e) => {
+                        setUser((prev) => ({
+                            ...prev,
+                            id: e.target.value,
+                        }));
+                    }}
                 />
                 <IdCheckBt type="Button" value="중복확인" />
             </IdBox>

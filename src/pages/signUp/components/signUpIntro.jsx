@@ -6,6 +6,7 @@ import CustomButton from '../../../components/customButton/customButton';
 import { useNavigate } from 'react-router-dom';
 
 function SignUpIntro({ upCount }) {
+    // upCount를 props로 받아옴
     const navigate = useNavigate();
     return (
         <BackImg>
