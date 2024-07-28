@@ -9,9 +9,10 @@ import { useNavigate } from 'react-router-dom';
 
 function Socrates() {
     const navigate = useNavigate();
-    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [currentQuestion, setCurrentQuestion] = useState(0); // 현재 질문 상태 0으로 설정
     const [answer, setAnswer] = useState({
-        answer1: '',
+        // answer의 객체 생성
+        answer1: '', // 키: 값 - 요소
         answer2: '',
         answer3: '',
         answer4: '',
@@ -20,8 +21,8 @@ function Socrates() {
 
     const handleUpDownQuestion = (upDown) => {
         if (upDown === 'up') {
-            if (currentQuestion === 4) return;
-            setCurrentQuestion((prev) => prev + 1);
+            if (currentQuestion === 4) return; // 얼리 리턴문. cq가 4일때 실행 안 함.
+            setCurrentQuestion((prev) => prev + 1); // cq가 4가 아닐때, scq에 +1의 값 저장.
         }
         if (upDown === 'down') {
             setCurrentQuestion((prev) => prev - 1);
@@ -46,6 +47,7 @@ function Socrates() {
                         setAnswer((prev) => ({
                             ...prev,
                             [`answer${currentQuestion + 1}`]: e.target.value,
+                            // 대괄호 백틱을 통해 키를 동적으로 받을수 있음. 안에 변수를 넣을 수 있다.
                         }))
                     }
                     value={answer[`answer${currentQuestion + 1}`]}
